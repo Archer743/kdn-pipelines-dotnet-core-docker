@@ -11,8 +11,6 @@ resources:
 variables:
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
-
-  # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
 stages:
@@ -25,8 +23,8 @@ stages:
       vmImage: $(vmImageName)
     steps:
     - bash: |
-        echo "Image repo: $(imageRepository)\n"
-        echo "Docker Registry Service Conn: $(dockerRegistryServiceConnection)" 
+        echo "Image repo: $(imageRepository)"
+        echo "Docker Registry Service Conn: $(dockerRegistryServiceConnection)"
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
